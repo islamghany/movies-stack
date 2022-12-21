@@ -26,7 +26,7 @@ const getMovies = async ({
   let query = "";
 
   query = buildQuery(query, undefined, type);
-  query += buildQuery(query, "api_key", "5e7ad19a8c711c01379bb855a100a09b");
+  query += buildQuery(query, "api_key", import.meta.env.VITE_API_KEY);
   query += buildQuery(query, "page", page);
   query += buildQuery(query, "query", search);
   query += buildQuery(query, "language", language);
@@ -44,7 +44,7 @@ const getMovies = async ({
 async function getMovie(id: string | undefined) {
   try {
     const res = await api.get<BigMoive>(
-      "/movie/" + id + "?api_key=5e7ad19a8c711c01379bb855a100a09b"
+      "/movie/" + id + "?api_key=" + import.meta.env.VITE_API_KEY
     );
 
     return res.data;
